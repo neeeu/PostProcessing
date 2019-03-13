@@ -381,16 +381,16 @@ namespace UnityEngine.Rendering.PostProcessing
             // when ResetProjectionMatrix() is called and will break transparent rendering if TAA
             // is switched off and the FOV or any other camera property changes.
  
-#if UNITY_2018_2_OR_NEWER
-            if (!m_Camera.usePhysicalProperties)
-#endif
-                m_Camera.ResetProjectionMatrix();
-            m_Camera.nonJitteredProjectionMatrix = m_Camera.projectionMatrix;
+//#if UNITY_2018_2_OR_NEWER
+//            if (!m_Camera.usePhysicalProperties)
+//#endif
+//                m_Camera.ResetProjectionMatrix();
+//            m_Camera.nonJitteredProjectionMatrix = m_Camera.projectionMatrix;
 
 #if !UNITY_SWITCH
             if (m_Camera.stereoEnabled)
             {
-                m_Camera.ResetStereoProjectionMatrices();
+//                m_Camera.ResetStereoProjectionMatrices();
                 Shader.SetGlobalFloat(ShaderIDs.RenderViewportScaleFactor, XRSettings.renderViewportScale);
             }
             else
@@ -607,9 +607,9 @@ namespace UnityEngine.Rendering.PostProcessing
                 // TAA calls SetProjectionMatrix so if the camera projection mode was physical, it gets set to explicit. So we set it back to physical.
                 if (m_CurrentContext.physicalCamera)   
                     m_Camera.usePhysicalProperties = true;
-                else 
+                //else 
 #endif
-                    m_Camera.ResetProjectionMatrix();
+                    //m_Camera.ResetProjectionMatrix();
 
                 if (m_CurrentContext.stereoActive)
                 {
